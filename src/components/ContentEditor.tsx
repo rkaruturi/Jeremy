@@ -1,11 +1,5 @@
 import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
 import { Edit2, Save, Plus, Trash2, X } from 'lucide-react';
-
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
 
 interface AboutUsContent {
   id: string;
@@ -45,15 +39,25 @@ export default function ContentEditor() {
 
   const fetchContent = async () => {
     try {
+      const headers = {
+        'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+      };
+
       const [aboutUsRes, servicesRes, projectsRes] = await Promise.all([
-        supabase.from('about_us').select('*').order('order_index'),
-        supabase.from('services').select('*').order('order_index'),
-        supabase.from('projects').select('*').order('order_index'),
+        fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/content-management?table=about_us`, { headers }),
+        fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/content-management?table=services`, { headers }),
+        fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/content-management?table=projects`, { headers }),
       ]);
 
-      setAboutUs(aboutUsRes.data || []);
-      setServices(servicesRes.data || []);
-      setProjects(projectsRes.data || []);
+      const [aboutUsData, servicesData, projectsData] = await Promise.all([
+        aboutUsRes.json(),
+        servicesRes.json(),
+        projectsRes.json(),
+      ]);
+
+      setAboutUs(aboutUsData || []);
+      setServices(servicesData || []);
+      setProjects(projectsData || []);
     } catch (error) {
       console.error('Error fetching content:', error);
     } finally {
@@ -64,12 +68,20 @@ export default function ContentEditor() {
   const updateAboutUs = async (id: string, updates: Partial<AboutUsContent>) => {
     setSaving(true);
     try {
-      const { error } = await supabase
-        .from('about_us')
-        .update({ ...updates, updated_at: new Date().toISOString() })
-        .eq('id', id);
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/content-management?table=about_us&id=${id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updates),
+        }
+      );
 
-      if (error) throw error;
+      if (!response.ok) throw new Error('Update failed');
+
       await fetchContent();
       setEditingId(null);
     } catch (error) {
@@ -82,12 +94,20 @@ export default function ContentEditor() {
   const updateService = async (id: string, updates: Partial<Service>) => {
     setSaving(true);
     try {
-      const { error } = await supabase
-        .from('services')
-        .update({ ...updates, updated_at: new Date().toISOString() })
-        .eq('id', id);
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/content-management?table=services&id=${id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updates),
+        }
+      );
 
-      if (error) throw error;
+      if (!response.ok) throw new Error('Update failed');
+
       await fetchContent();
       setEditingId(null);
     } catch (error) {
@@ -100,12 +120,20 @@ export default function ContentEditor() {
   const updateProject = async (id: string, updates: Partial<Project>) => {
     setSaving(true);
     try {
-      const { error } = await supabase
-        .from('projects')
-        .update({ ...updates, updated_at: new Date().toISOString() })
-        .eq('id', id);
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/content-management?table=projects&id=${id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updates),
+        }
+      );
 
-      if (error) throw error;
+      if (!response.ok) throw new Error('Update failed');
+
       await fetchContent();
       setEditingId(null);
     } catch (error) {
