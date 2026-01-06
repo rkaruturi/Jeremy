@@ -242,21 +242,21 @@ function App() {
             </g>
           </svg>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Meet Jeremy Schissler</h2>
-              <p className="text-xl text-gray-700 leading-relaxed">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 mb-3">Meet Jeremy Schissler</h2>
+              <p className="text-xl text-gray-700">
                 Regenerative agronomist, systems-builder, and founder of Eden's Gate Soil Company
               </p>
             </div>
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="space-y-6">
-                <div className="mb-8">
-                  <img
-                    src="/jeremy_photo.jpg"
-                    alt="Jeremy Schissler"
-                    className="w-full max-w-md mx-auto rounded-2xl shadow-xl border-4 border-lime-300"
-                  />
-                </div>
+            <div className="grid lg:grid-cols-3 gap-8 items-start">
+              <div className="lg:col-span-1">
+                <img
+                  src="/jeremy_photo.jpg"
+                  alt="Jeremy Schissler"
+                  className="w-full rounded-2xl shadow-xl border-4 border-lime-300 sticky top-40"
+                />
+              </div>
+              <div className="lg:col-span-2 space-y-6">
                 <p className="text-lg text-gray-700 leading-relaxed">
                   I design high-functioning agricultural ecosystems that blend soil biology, ecology,
                   and practical agronomy into strategies farmers can actually use.
@@ -270,21 +270,21 @@ function App() {
                   and management in ways that improve land fast. I thrive at the intersection of research,
                   field testing, and system design.
                 </p>
-              </div>
-              <div className="bg-gradient-to-br from-lime-100 to-green-100 p-8 rounded-2xl border-2 border-lime-300">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Core Philosophy</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <Sprout className="text-lime-600 flex-shrink-0 mt-1" size={24} />
-                    <p className="text-gray-800">Translating complex science into clear, actionable steps</p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <Microscope className="text-lime-600 flex-shrink-0 mt-1" size={24} />
-                    <p className="text-gray-800">Uniting microbial ecology, redox bio-chemistry, and ecological design</p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <Leaf className="text-lime-600 flex-shrink-0 mt-1" size={24} />
-                    <p className="text-gray-800">Building frameworks that unlock long-term resilience</p>
+                <div className="bg-gradient-to-br from-lime-100 to-green-100 p-8 rounded-2xl border-2 border-lime-300 mt-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Core Philosophy</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <Sprout className="text-lime-600 flex-shrink-0 mt-1" size={24} />
+                      <p className="text-gray-800">Translating complex science into clear, actionable steps</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <Microscope className="text-lime-600 flex-shrink-0 mt-1" size={24} />
+                      <p className="text-gray-800">Uniting microbial ecology, redox bio-chemistry, and ecological design</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <Leaf className="text-lime-600 flex-shrink-0 mt-1" size={24} />
+                      <p className="text-gray-800">Building frameworks that unlock long-term resilience</p>
+                    </div>
                   </div>
                 </div>
               </div>
