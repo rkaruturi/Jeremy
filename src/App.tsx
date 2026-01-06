@@ -42,13 +42,6 @@ function App() {
             </div>
             <div className="flex items-center space-x-4">
               <button
-                onClick={() => setCurrentView('admin')}
-                className="hidden md:flex items-center space-x-2 bg-white bg-opacity-20 text-white px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all font-semibold border border-white border-opacity-30"
-              >
-                <Lock size={18} />
-                <span>Admin</span>
-              </button>
-              <button
                 onClick={() => setShowCart(true)}
                 className="relative flex items-center space-x-2 bg-white text-green-700 px-6 py-3 rounded-lg hover:bg-lime-50 transition-all font-semibold shadow-lg"
               >
@@ -566,6 +559,14 @@ function App() {
           </div>
         </div>
       </footer>
+
+      <button
+        onClick={() => setCurrentView('admin')}
+        className="fixed bottom-6 right-6 bg-gradient-to-r from-lime-500 to-green-600 text-white p-3 rounded-full shadow-lg hover:from-lime-600 hover:to-green-700 hover:scale-110 transition-all z-40"
+        title="Admin Login"
+      >
+        <Lock size={20} />
+      </button>
     </div>
   );
 }

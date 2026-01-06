@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Product, Order } from '../types';
-import { Plus, Edit, Trash2, Package, ShoppingCart, LogOut, X } from 'lucide-react';
+import { Plus, Edit, Trash2, Package, ShoppingCart, LogOut, X, FileText } from 'lucide-react';
+import ContentEditor from './ContentEditor';
 
 export default function AdminDashboard() {
   const [products, setProducts] = useState<Product[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
-  const [activeTab, setActiveTab] = useState<'products' | 'orders'>('products');
+  const [activeTab, setActiveTab] = useState<'products' | 'orders' | 'content'>('products');
   const [showProductForm, setShowProductForm] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const { logout } = useAuth();
@@ -168,6 +169,17 @@ export default function AdminDashboard() {
           >
             <ShoppingCart size={20} />
             <span>Orders</span>
+          </button>
+          <button
+            onClick={() => setActiveTab('content')}
+            className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all ${
+              activeTab === 'content'
+                ? 'bg-gradient-to-r from-lime-500 to-green-600 text-white shadow-lg'
+                : 'bg-white text-gray-700 hover:bg-lime-50'
+            }`}
+          >
+            <FileText size={20} />
+            <span>Page Content</span>
           </button>
         </div>
 
@@ -374,6 +386,13 @@ export default function AdminDashboard() {
                 </div>
               ))}
             </div>
+          </div>
+        )}
+
+        {activeTab === 'content' && (
+          <div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Page Content Editor</h2>
+            <ContentEditor />
           </div>
         )}
       </div>
