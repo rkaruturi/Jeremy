@@ -250,6 +250,13 @@ function App() {
             </div>
             <div className="grid md:grid-cols-2 gap-12">
               <div className="space-y-6">
+                <div className="mb-8">
+                  <img
+                    src="/jeremy_photo.jpg"
+                    alt="Jeremy Schissler"
+                    className="w-full max-w-md mx-auto rounded-2xl shadow-xl border-4 border-lime-300"
+                  />
+                </div>
                 <p className="text-lg text-gray-700 leading-relaxed">
                   I design high-functioning agricultural ecosystems that blend soil biology, ecology,
                   and practical agronomy into strategies farmers can actually use.
