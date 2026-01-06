@@ -1,6 +1,26 @@
-import { Sprout, Microscope, Leaf, Mail, Phone, ArrowRight, Flower2, Recycle, Network } from 'lucide-react';
+import { useState } from 'react';
+import { Sprout, Microscope, Leaf, Mail, Phone, ArrowRight, Flower2, Recycle, Network, ShoppingCart, Lock } from 'lucide-react';
+import { useCart } from './context/CartContext';
+import { useAuth } from './context/AuthContext';
+import Cart from './components/Cart';
+import Shop from './components/Shop';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
 
 function App() {
+  const [showCart, setShowCart] = useState(false);
+  const [currentView, setCurrentView] = useState<'home' | 'admin' | 'adminDashboard'>('home');
+  const { getTotalItems } = useCart();
+  const { isAdmin } = useAuth();
+
+  if (currentView === 'admin' && !isAdmin) {
+    return <AdminLogin onLoginSuccess={() => setCurrentView('adminDashboard')} />;
+  }
+
+  if (currentView === 'adminDashboard' && isAdmin) {
+    return <AdminDashboard />;
+  }
+
   return (
     <div className="min-h-screen relative" style={{
       background: `linear-gradient(to bottom, rgba(247, 254, 231, 0.95), rgba(240, 253, 244, 0.95)), url('/eden's_gate.jpeg')`,
@@ -20,16 +40,32 @@ function App() {
                 <p className="text-base text-lime-100 font-medium">Soil Company</p>
               </div>
             </div>
-            <a
-              href="#contact"
-              className="hidden md:flex items-center space-x-2 bg-white text-green-700 px-6 py-3 rounded-lg hover:bg-lime-50 transition-all font-semibold shadow-lg"
-            >
-              <span>Get Started</span>
-              <ArrowRight size={18} />
-            </a>
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={() => setCurrentView('admin')}
+                className="hidden md:flex items-center space-x-2 bg-white bg-opacity-20 text-white px-4 py-2 rounded-lg hover:bg-opacity-30 transition-all font-semibold border border-white border-opacity-30"
+              >
+                <Lock size={18} />
+                <span>Admin</span>
+              </button>
+              <button
+                onClick={() => setShowCart(true)}
+                className="relative flex items-center space-x-2 bg-white text-green-700 px-6 py-3 rounded-lg hover:bg-lime-50 transition-all font-semibold shadow-lg"
+              >
+                <ShoppingCart size={18} />
+                <span className="hidden md:inline">Cart</span>
+                {getTotalItems() > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center">
+                    {getTotalItems()}
+                  </span>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
+
+      <Cart isOpen={showCart} onClose={() => setShowCart(false)} />
 
       <main className="pt-32">
         <section className="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -427,6 +463,8 @@ function App() {
             </div>
           </div>
         </section>
+
+        <Shop />
 
         <section id="contact" className="py-24 bg-gradient-to-br from-lime-500 via-green-600 to-green-700 relative overflow-hidden">
           <svg className="absolute top-10 right-20 w-64 h-64 opacity-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
