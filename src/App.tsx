@@ -1,60 +1,19 @@
-import { Sprout, Microscope, Leaf, Mail, Phone, ArrowRight, Flower2 } from 'lucide-react';
+import { Sprout, Microscope, Leaf, Mail, Phone, ArrowRight, Flower2, Recycle, Network } from 'lucide-react';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-lime-50 to-green-50 relative">
-      <svg className="absolute inset-0 w-full h-full opacity-5 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="mandala-pattern" x="0" y="0" width="400" height="400" patternUnits="userSpaceOnUse">
-            <g transform="translate(200,200)">
-              <circle cx="0" cy="0" r="80" fill="none" stroke="#65a30d" strokeWidth="1"/>
-              <circle cx="0" cy="0" r="60" fill="none" stroke="#84cc16" strokeWidth="1"/>
-              <circle cx="0" cy="0" r="40" fill="none" stroke="#65a30d" strokeWidth="1"/>
-              {[...Array(12)].map((_, i) => {
-                const angle = (i * 30) * Math.PI / 180;
-                const x1 = Math.cos(angle) * 40;
-                const y1 = Math.sin(angle) * 40;
-                const x2 = Math.cos(angle) * 80;
-                const y2 = Math.sin(angle) * 80;
-                return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#84cc16" strokeWidth="1"/>;
-              })}
-              {[...Array(8)].map((_, i) => {
-                const angle = (i * 45) * Math.PI / 180;
-                const petalLength = 30;
-                const cx = Math.cos(angle) * 70;
-                const cy = Math.sin(angle) * 70;
-                return (
-                  <ellipse
-                    key={i}
-                    cx={cx}
-                    cy={cy}
-                    rx="12"
-                    ry="25"
-                    fill="none"
-                    stroke="#65a30d"
-                    strokeWidth="1.5"
-                    transform={`rotate(${i * 45}, ${cx}, ${cy})`}
-                  />
-                );
-              })}
-              <circle cx="0" cy="0" r="15" fill="none" stroke="#84cc16" strokeWidth="2"/>
-              {[...Array(6)].map((_, i) => {
-                const angle = (i * 60) * Math.PI / 180;
-                const x = Math.cos(angle) * 10;
-                const y = Math.sin(angle) * 10;
-                return <circle key={i} cx={x} cy={y} r="3" fill="#65a30d"/>;
-              })}
-            </g>
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#mandala-pattern)"/>
-      </svg>
+    <div className="min-h-screen relative" style={{
+      background: `linear-gradient(to bottom, rgba(247, 254, 231, 0.95), rgba(240, 253, 244, 0.95)), url('/eden's_gate.jpeg')`,
+      backgroundSize: 'cover, 400px 400px',
+      backgroundPosition: 'center, center',
+      backgroundAttachment: 'fixed, fixed'
+    }}>
       <nav className="fixed w-full bg-gradient-to-r from-lime-600 to-green-700 shadow-lg z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-24">
             <div className="flex items-center space-x-4">
               <div className="bg-white/95 backdrop-blur-sm p-2 rounded-xl shadow-lg">
-                <img src="/edens_gate2.jpeg" alt="Eden's Gate Logo" className="h-16 w-16 object-contain" />
+                <img src="/eden's_gate.jpeg" alt="Eden's Gate Logo" className="h-16 w-16 object-contain" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-white tracking-tight">Eden's Gate</h1>
@@ -73,60 +32,7 @@ function App() {
       </nav>
 
       <main className="pt-24">
-        <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-lime-100 via-green-50 to-emerald-100 overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-20 left-10 w-64 h-64 bg-lime-400 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-400 rounded-full blur-3xl"></div>
-          </div>
-          <svg className="absolute top-10 right-10 w-96 h-96 opacity-[0.07]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-            <g transform="translate(100,100)">
-              {[...Array(16)].map((_, i) => {
-                const angle = (i * 22.5) * Math.PI / 180;
-                const x = Math.cos(angle) * 80;
-                const y = Math.sin(angle) * 80;
-                return (
-                  <g key={i}>
-                    <ellipse
-                      cx={x}
-                      cy={y}
-                      rx="15"
-                      ry="35"
-                      fill="none"
-                      stroke="#65a30d"
-                      strokeWidth="2"
-                      transform={`rotate(${i * 22.5}, ${x}, ${y})`}
-                    />
-                  </g>
-                );
-              })}
-              <circle cx="0" cy="0" r="70" fill="none" stroke="#84cc16" strokeWidth="3"/>
-              <circle cx="0" cy="0" r="50" fill="none" stroke="#65a30d" strokeWidth="2"/>
-              <circle cx="0" cy="0" r="30" fill="none" stroke="#84cc16" strokeWidth="3"/>
-            </g>
-          </svg>
-          <svg className="absolute bottom-20 left-20 w-80 h-80 opacity-[0.06]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-            <g transform="translate(100,100)">
-              {[...Array(12)].map((_, i) => {
-                const angle = (i * 30) * Math.PI / 180;
-                const x = Math.cos(angle) * 60;
-                const y = Math.sin(angle) * 60;
-                return (
-                  <circle key={i} cx={x} cy={y} r="8" fill="#65a30d" opacity="0.5"/>
-                );
-              })}
-              {[...Array(8)].map((_, i) => {
-                const angle = (i * 45) * Math.PI / 180;
-                const x1 = Math.cos(angle) * 30;
-                const y1 = Math.sin(angle) * 30;
-                const x2 = Math.cos(angle) * 70;
-                const y2 = Math.sin(angle) * 70;
-                return (
-                  <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#84cc16" strokeWidth="2"/>
-                );
-              })}
-              <circle cx="0" cy="0" r="25" fill="none" stroke="#65a30d" strokeWidth="3"/>
-            </g>
-          </svg>
+        <section className="relative min-h-[90vh] flex items-center overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-8">
@@ -253,43 +159,57 @@ function App() {
         </section>
 
         <section id="about" className="py-24 bg-white relative overflow-hidden">
-          <svg className="absolute top-0 left-0 w-64 h-64 opacity-[0.04]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-20 left-10 w-64 h-64 bg-lime-400 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-400 rounded-full blur-3xl"></div>
+          </div>
+          <svg className="absolute top-10 right-10 w-96 h-96 opacity-[0.06]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
             <g transform="translate(100,100)">
-              {[...Array(8)].map((_, i) => {
-                const angle = (i * 45) * Math.PI / 180;
-                const x = Math.cos(angle) * 70;
-                const y = Math.sin(angle) * 70;
+              {[...Array(16)].map((_, i) => {
+                const angle = (i * 22.5) * Math.PI / 180;
+                const x = Math.cos(angle) * 80;
+                const y = Math.sin(angle) * 80;
                 return (
-                  <ellipse
-                    key={i}
-                    cx={x}
-                    cy={y}
-                    rx="18"
-                    ry="40"
-                    fill="none"
-                    stroke="#65a30d"
-                    strokeWidth="2.5"
-                    transform={`rotate(${i * 45}, ${x}, ${y})`}
-                  />
+                  <g key={i}>
+                    <ellipse
+                      cx={x}
+                      cy={y}
+                      rx="15"
+                      ry="35"
+                      fill="none"
+                      stroke="#65a30d"
+                      strokeWidth="2"
+                      transform={`rotate(${i * 22.5}, ${x}, ${y})`}
+                    />
+                  </g>
                 );
               })}
-              <circle cx="0" cy="0" r="60" fill="none" stroke="#84cc16" strokeWidth="3"/>
-              <circle cx="0" cy="0" r="20" fill="#65a30d" opacity="0.3"/>
+              <circle cx="0" cy="0" r="70" fill="none" stroke="#84cc16" strokeWidth="3"/>
+              <circle cx="0" cy="0" r="50" fill="none" stroke="#65a30d" strokeWidth="2"/>
+              <circle cx="0" cy="0" r="30" fill="none" stroke="#84cc16" strokeWidth="3"/>
             </g>
           </svg>
-          <svg className="absolute bottom-0 right-0 w-72 h-72 opacity-[0.04]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+          <svg className="absolute bottom-20 left-20 w-80 h-80 opacity-[0.05]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
             <g transform="translate(100,100)">
-              {[...Array(24)].map((_, i) => {
-                const angle = (i * 15) * Math.PI / 180;
-                const innerR = 40;
-                const outerR = 80;
-                const x1 = Math.cos(angle) * innerR;
-                const y1 = Math.sin(angle) * innerR;
-                const x2 = Math.cos(angle) * outerR;
-                const y2 = Math.sin(angle) * outerR;
-                return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#84cc16" strokeWidth="1.5" opacity="0.6"/>;
+              {[...Array(12)].map((_, i) => {
+                const angle = (i * 30) * Math.PI / 180;
+                const x = Math.cos(angle) * 60;
+                const y = Math.sin(angle) * 60;
+                return (
+                  <circle key={i} cx={x} cy={y} r="8" fill="#65a30d" opacity="0.5"/>
+                );
               })}
-              <circle cx="0" cy="0" r="35" fill="none" stroke="#65a30d" strokeWidth="3"/>
+              {[...Array(8)].map((_, i) => {
+                const angle = (i * 45) * Math.PI / 180;
+                const x1 = Math.cos(angle) * 30;
+                const y1 = Math.sin(angle) * 30;
+                const x2 = Math.cos(angle) * 70;
+                const y2 = Math.sin(angle) * 70;
+                return (
+                  <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#84cc16" strokeWidth="2"/>
+                );
+              })}
+              <circle cx="0" cy="0" r="25" fill="none" stroke="#65a30d" strokeWidth="3"/>
             </g>
           </svg>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -364,32 +284,43 @@ function App() {
               {[
                 {
                   title: "Multi-Species Cover Crops",
-                  description: "Strategic design of diverse cover crop systems that rebuild soil structure and biological activity"
+                  description: "Strategic design of diverse cover crop systems that rebuild soil structure and biological activity",
+                  icon: Sprout,
+                  gradient: "from-lime-400 to-green-500"
                 },
                 {
                   title: "Composting Strategies",
-                  description: "Advanced composting systems including the flagship Palingenesis method"
+                  description: "Advanced composting systems including the flagship Palingenesis method",
+                  icon: Recycle,
+                  gradient: "from-green-400 to-emerald-500"
                 },
                 {
                   title: "Soil Restoration",
-                  description: "Comprehensive approaches to rebuilding soil function and microbial communities"
+                  description: "Comprehensive approaches to rebuilding soil function and microbial communities",
+                  icon: Microscope,
+                  gradient: "from-emerald-400 to-teal-500"
                 },
                 {
                   title: "System Design",
-                  description: "Holistic farm systems that integrate ecology, biology, and profitability"
+                  description: "Holistic farm systems that integrate ecology, biology, and profitability",
+                  icon: Network,
+                  gradient: "from-lime-500 to-green-600"
                 }
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border-2 border-lime-200 hover:border-lime-400"
-                >
-                  <div className="bg-gradient-to-br from-lime-400 to-green-500 w-14 h-14 rounded-lg flex items-center justify-center mb-6 shadow-md">
-                    <Sprout className="text-white" size={28} />
+              ].map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={index}
+                    className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border-2 border-lime-200 hover:border-lime-400"
+                  >
+                    <div className={`bg-gradient-to-br ${item.gradient} w-14 h-14 rounded-lg flex items-center justify-center mb-6 shadow-md`}>
+                      <Icon className="text-white" size={28} />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                    <p className="text-gray-700 leading-relaxed">{item.description}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                  <p className="text-gray-700 leading-relaxed">{item.description}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
