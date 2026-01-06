@@ -5,10 +5,10 @@ function App() {
     <div className="min-h-screen bg-gradient-to-b from-lime-50 to-green-50">
       <nav className="fixed w-full bg-gradient-to-r from-lime-600 to-green-700 shadow-lg z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center space-x-3">
-              <div className="bg-white/20 backdrop-blur-sm p-2 rounded-lg">
-                <Flower2 className="text-white" size={32} />
+          <div className="flex justify-between items-center h-24">
+            <div className="flex items-center space-x-4">
+              <div className="bg-white/95 backdrop-blur-sm p-2 rounded-xl shadow-lg">
+                <img src="/edens_gate2.jpeg" alt="Eden's Gate Logo" className="h-16 w-16 object-contain" />
               </div>
               <div>
                 <h1 className="text-3xl font-bold text-white tracking-tight">Eden's Gate</h1>
@@ -26,19 +26,23 @@ function App() {
         </div>
       </nav>
 
-      <main className="pt-20">
-        <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-lime-100 via-green-50 to-emerald-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <main className="pt-24">
+        <section className="relative min-h-[90vh] flex items-center bg-gradient-to-br from-lime-100 via-green-50 to-emerald-100 overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-20 left-10 w-64 h-64 bg-lime-400 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-green-400 rounded-full blur-3xl"></div>
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div className="space-y-8">
                 <div className="inline-block">
                   <span className="bg-lime-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md">
                     Regenerative Agriculture Systems
                   </span>
                 </div>
-                <h2 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                <h2 className="text-5xl lg:text-7xl font-bold text-gray-900 leading-tight">
                   Building Systems That{' '}
-                  <span className="text-lime-600">Regenerate</span> Land
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-600 to-green-600">Regenerate</span> Land
                 </h2>
                 <p className="text-xl text-gray-800 leading-relaxed">
                   Expert soil restoration, multi-species cover crop design, and regenerative strategies
@@ -63,17 +67,42 @@ function App() {
                   "We rise by amplifying coherence."
                 </p>
               </div>
-              <div className="relative">
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl ring-4 ring-lime-200">
-                  <img
-                    src="/eden's_gate.jpeg"
-                    alt="Compost System Guide"
-                    className="w-full h-full object-cover"
-                  />
+              <div className="relative flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-80 h-80 border-2 border-lime-300 rounded-full opacity-20 animate-pulse"></div>
+                  <div className="absolute w-64 h-64 border-2 border-green-400 rounded-full opacity-30 animate-pulse" style={{animationDelay: '1s'}}></div>
+                  <div className="absolute w-48 h-48 border-2 border-lime-400 rounded-full opacity-40 animate-pulse" style={{animationDelay: '2s'}}></div>
                 </div>
-                <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-white to-lime-50 p-6 rounded-xl shadow-xl max-w-xs border-2 border-lime-200">
-                  <p className="text-sm text-gray-600 mb-1">Expert-Designed</p>
-                  <p className="font-bold text-green-800 text-lg">Palingenesis Compost System</p>
+                <div className="relative z-10 bg-white/80 backdrop-blur-sm p-12 rounded-3xl shadow-2xl border-2 border-lime-200">
+                  <div className="space-y-6">
+                    <div className="flex items-center space-x-4">
+                      <div className="bg-gradient-to-br from-lime-400 to-green-500 p-4 rounded-xl">
+                        <Sprout className="text-white" size={40} />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900">Soil Health</h3>
+                        <p className="text-gray-600">Regeneration</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-4">
+                      <div className="bg-gradient-to-br from-green-400 to-emerald-500 p-4 rounded-xl">
+                        <Leaf className="text-white" size={40} />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900">Ecological</h3>
+                        <p className="text-gray-600">Design</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-4">
+                      <div className="bg-gradient-to-br from-lime-500 to-green-600 p-4 rounded-xl">
+                        <Microscope className="text-white" size={40} />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900">Biological</h3>
+                        <p className="text-gray-600">Systems</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
