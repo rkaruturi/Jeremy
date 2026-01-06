@@ -162,43 +162,91 @@ function App() {
                   "We rise by amplifying coherence."
                 </p>
               </div>
-              <div className="relative flex items-center justify-center">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-80 h-80 border-2 border-lime-300 rounded-full opacity-20 animate-pulse"></div>
-                  <div className="absolute w-64 h-64 border-2 border-green-400 rounded-full opacity-30 animate-pulse" style={{animationDelay: '1s'}}></div>
-                  <div className="absolute w-48 h-48 border-2 border-lime-400 rounded-full opacity-40 animate-pulse" style={{animationDelay: '2s'}}></div>
-                </div>
-                <div className="relative z-10 bg-white/80 backdrop-blur-sm p-12 rounded-3xl shadow-2xl border-2 border-lime-200">
-                  <div className="space-y-6">
-                    <div className="flex items-center space-x-4">
-                      <div className="bg-gradient-to-br from-lime-400 to-green-500 p-4 rounded-xl">
-                        <Sprout className="text-white" size={40} />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900">Soil Health</h3>
-                        <p className="text-gray-600">Regeneration</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                      <div className="bg-gradient-to-br from-green-400 to-emerald-500 p-4 rounded-xl">
-                        <Leaf className="text-white" size={40} />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900">Ecological</h3>
-                        <p className="text-gray-600">Design</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                      <div className="bg-gradient-to-br from-lime-500 to-green-600 p-4 rounded-xl">
-                        <Microscope className="text-white" size={40} />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900">Biological</h3>
-                        <p className="text-gray-600">Systems</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="relative flex items-center justify-center min-h-[500px]">
+                <svg className="w-full h-full max-w-2xl" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#84cc16', stopOpacity: 0.3}} />
+                      <stop offset="100%" style={{stopColor: '#65a30d', stopOpacity: 0.5}} />
+                    </linearGradient>
+                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#22c55e', stopOpacity: 0.3}} />
+                      <stop offset="100%" style={{stopColor: '#16a34a', stopOpacity: 0.5}} />
+                    </linearGradient>
+                    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style={{stopColor: '#84cc16', stopOpacity: 0.3}} />
+                      <stop offset="100%" style={{stopColor: '#22c55e', stopOpacity: 0.5}} />
+                    </linearGradient>
+                  </defs>
+
+                  <g transform="translate(250, 250)">
+                    {[...Array(8)].map((_, i) => {
+                      const angle = (i * 45) * Math.PI / 180;
+                      const x = Math.cos(angle) * 180;
+                      const y = Math.sin(angle) * 180;
+                      return (
+                        <ellipse
+                          key={i}
+                          cx={x}
+                          cy={y}
+                          rx="40"
+                          ry="100"
+                          fill="url(#gradient1)"
+                          stroke="#65a30d"
+                          strokeWidth="2"
+                          transform={`rotate(${i * 45}, ${x}, ${y})`}
+                          opacity="0.4"
+                        />
+                      );
+                    })}
+
+                    <circle cx="-140" cy="-140" r="70" fill="url(#gradient1)" stroke="#65a30d" strokeWidth="3" opacity="0.6" className="animate-pulse" style={{animationDuration: '3s'}}/>
+                    <g transform="translate(-140, -140)">
+                      <foreignObject x="-35" y="-50" width="70" height="100">
+                        <div className="flex flex-col items-center justify-center h-full">
+                          <Sprout className="text-lime-700 mb-2" size={32} />
+                          <p className="text-sm font-bold text-gray-900 text-center">Soil Health</p>
+                          <p className="text-xs text-gray-700 text-center">Regeneration</p>
+                        </div>
+                      </foreignObject>
+                    </g>
+
+                    <circle cx="140" cy="-140" r="70" fill="url(#gradient2)" stroke="#16a34a" strokeWidth="3" opacity="0.6" className="animate-pulse" style={{animationDuration: '3s', animationDelay: '1s'}}/>
+                    <g transform="translate(140, -140)">
+                      <foreignObject x="-35" y="-50" width="70" height="100">
+                        <div className="flex flex-col items-center justify-center h-full">
+                          <Leaf className="text-green-700 mb-2" size={32} />
+                          <p className="text-sm font-bold text-gray-900 text-center">Ecological</p>
+                          <p className="text-xs text-gray-700 text-center">Design</p>
+                        </div>
+                      </foreignObject>
+                    </g>
+
+                    <circle cx="0" cy="140" r="70" fill="url(#gradient3)" stroke="#65a30d" strokeWidth="3" opacity="0.6" className="animate-pulse" style={{animationDuration: '3s', animationDelay: '2s'}}/>
+                    <g transform="translate(0, 140)">
+                      <foreignObject x="-35" y="-50" width="70" height="100">
+                        <div className="flex flex-col items-center justify-center h-full">
+                          <Microscope className="text-lime-700 mb-2" size={32} />
+                          <p className="text-sm font-bold text-gray-900 text-center">Biological</p>
+                          <p className="text-xs text-gray-700 text-center">Systems</p>
+                        </div>
+                      </foreignObject>
+                    </g>
+
+                    <circle cx="0" cy="0" r="140" fill="none" stroke="#84cc16" strokeWidth="2" opacity="0.3"/>
+                    <circle cx="0" cy="0" r="100" fill="none" stroke="#65a30d" strokeWidth="2" opacity="0.2"/>
+                    <circle cx="0" cy="0" r="60" fill="none" stroke="#84cc16" strokeWidth="3" opacity="0.3"/>
+
+                    {[...Array(12)].map((_, i) => {
+                      const angle = (i * 30) * Math.PI / 180;
+                      const x1 = Math.cos(angle) * 60;
+                      const y1 = Math.sin(angle) * 60;
+                      const x2 = Math.cos(angle) * 100;
+                      const y2 = Math.sin(angle) * 100;
+                      return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#84cc16" strokeWidth="1.5" opacity="0.2"/>;
+                    })}
+                  </g>
+                </svg>
               </div>
             </div>
           </div>
