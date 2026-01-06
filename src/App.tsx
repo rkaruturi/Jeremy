@@ -10,14 +10,14 @@ function App() {
     }}>
       <nav className="fixed w-full bg-gradient-to-r from-lime-600 to-green-700 shadow-lg z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-24">
-            <div className="flex items-center space-x-4">
-              <div className="bg-white/95 backdrop-blur-sm p-2 rounded-xl shadow-lg">
-                <img src="/eden's_gate.jpeg" alt="Eden's Gate Logo" className="h-16 w-16 object-contain" />
+          <div className="flex justify-between items-center h-32">
+            <div className="flex items-center space-x-5">
+              <div className="bg-white/95 backdrop-blur-sm p-3 rounded-2xl shadow-lg">
+                <img src="/eden's_gate1.jpeg" alt="Eden's Gate Logo" className="h-20 w-20 object-contain" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-white tracking-tight">Eden's Gate</h1>
-                <p className="text-sm text-lime-100 font-medium">Soil Company</p>
+                <h1 className="text-4xl font-bold text-white tracking-tight">Eden's Gate</h1>
+                <p className="text-base text-lime-100 font-medium">Soil Company</p>
               </div>
             </div>
             <a
@@ -31,7 +31,7 @@ function App() {
         </div>
       </nav>
 
-      <main className="pt-24">
+      <main className="pt-32">
         <section className="relative min-h-[90vh] flex items-center overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -280,44 +280,90 @@ function App() {
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Areas of Expertise</h2>
               <p className="text-xl text-gray-700">Comprehensive regenerative solutions for modern agriculture</p>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
               {[
                 {
                   title: "Multi-Species Cover Crops",
                   description: "Strategic design of diverse cover crop systems that rebuild soil structure and biological activity",
                   icon: Sprout,
-                  gradient: "from-lime-400 to-green-500"
+                  gradient: "from-lime-400 to-green-500",
+                  bgGradient: "from-lime-50 to-green-50"
                 },
                 {
                   title: "Composting Strategies",
                   description: "Advanced composting systems including the flagship Palingenesis method",
                   icon: Recycle,
-                  gradient: "from-green-400 to-emerald-500"
+                  gradient: "from-green-400 to-emerald-500",
+                  bgGradient: "from-green-50 to-emerald-50"
                 },
                 {
                   title: "Soil Restoration",
                   description: "Comprehensive approaches to rebuilding soil function and microbial communities",
                   icon: Microscope,
-                  gradient: "from-emerald-400 to-teal-500"
+                  gradient: "from-emerald-400 to-teal-500",
+                  bgGradient: "from-emerald-50 to-teal-50"
                 },
                 {
                   title: "System Design",
                   description: "Holistic farm systems that integrate ecology, biology, and profitability",
                   icon: Network,
-                  gradient: "from-lime-500 to-green-600"
+                  gradient: "from-lime-500 to-green-600",
+                  bgGradient: "from-lime-50 to-green-50"
                 }
               ].map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={index}
-                    className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border-2 border-lime-200 hover:border-lime-400"
+                    className="relative flex flex-col items-center group"
                   >
-                    <div className={`bg-gradient-to-br ${item.gradient} w-14 h-14 rounded-lg flex items-center justify-center mb-6 shadow-md`}>
-                      <Icon className="text-white" size={28} />
+                    <svg className="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-30 transition-opacity" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                      <g transform="translate(100, 100)">
+                        {[...Array(8)].map((_, i) => {
+                          const angle = (i * 45) * Math.PI / 180;
+                          const x = Math.cos(angle) * 70;
+                          const y = Math.sin(angle) * 70;
+                          return (
+                            <ellipse
+                              key={i}
+                              cx={x}
+                              cy={y}
+                              rx="12"
+                              ry="30"
+                              fill="none"
+                              stroke="#65a30d"
+                              strokeWidth="1.5"
+                              transform={`rotate(${i * 45}, ${x}, ${y})`}
+                            />
+                          );
+                        })}
+                        <circle cx="0" cy="0" r="60" fill="none" stroke="#84cc16" strokeWidth="2"/>
+                        <circle cx="0" cy="0" r="40" fill="none" stroke="#65a30d" strokeWidth="1.5"/>
+                      </g>
+                    </svg>
+
+                    <div className={`relative z-10 bg-gradient-to-br ${item.bgGradient} p-8 rounded-full w-48 h-48 flex items-center justify-center mb-6 shadow-lg border-3 border-lime-300 group-hover:shadow-xl group-hover:scale-105 transition-all`}>
+                      <div className={`bg-gradient-to-br ${item.gradient} w-20 h-20 rounded-full flex items-center justify-center shadow-lg`}>
+                        <Icon className="text-white" size={36} />
+                      </div>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                    <p className="text-gray-700 leading-relaxed">{item.description}</p>
+
+                    <div className="text-center px-4">
+                      <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                      <p className="text-gray-700 leading-relaxed text-sm">{item.description}</p>
+                    </div>
+
+                    <svg className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-24 opacity-10" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                      <g transform="translate(50, 50)">
+                        {[...Array(6)].map((_, i) => {
+                          const angle = (i * 60) * Math.PI / 180;
+                          const x = Math.cos(angle) * 30;
+                          const y = Math.sin(angle) * 30;
+                          return <circle key={i} cx={x} cy={y} r="5" fill="#65a30d"/>;
+                        })}
+                        <circle cx="0" cy="0" r="25" fill="none" stroke="#84cc16" strokeWidth="2"/>
+                      </g>
+                    </svg>
                   </div>
                 );
               })}
