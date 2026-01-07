@@ -33,7 +33,7 @@ function App() {
           <div className="flex justify-between items-center h-32">
             <div className="flex items-center space-x-5">
               <div className="bg-white/95 backdrop-blur-sm p-3 rounded-2xl shadow-lg">
-                <img src="/eden's_gate1.jpeg" alt="Eden's Gate Logo" className="h-20 w-20 object-contain" />
+                <img src="/edens_gate2.jpeg" alt="Eden's Gate Logo" className="h-20 w-20 object-contain" />
               </div>
               <div>
                 <h1 className="text-4xl font-bold text-white tracking-tight">Eden's Gate</h1>
